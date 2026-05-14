@@ -1,7 +1,7 @@
 #Model Comparison Report — Week 4 
 **Name:** [Daniel] 
 **Date:** [4/13/26] 
-**Project:** [Project name from Week 3] 
+**Project:** [Model Comparison] 
 **Component:** [The Entire Thing] 
 ## Test Setup 
 **Input dataset:** 5 [CyberSecurity] text samples covering: - 2 clearly concerning/high-severity records - 1 ambiguous/edge case record - 2 routine/benign records 
