@@ -1,0 +1,50 @@
+﻿input_text,model_1_sentiment_label,model_1_sentiment_score,model_2_zeroshot_label,model_2_zeroshot_score,model_3_ner_entities,model_4_groq_classification,notes,tested_at
+Unauthorized login from IP 198.51.100.4 traced to Moscow targeting user John Miller at 3:47 AM., NEGATIVE,0.9959, possible anomaly,0.8977," {""entity_group"":""LOC"",""score"":0.9996948,""word"":""Moscow"",""start"":50,""end"":56}", HIGH: This alert is classified as HIGH because an unauthorized login attempt from an unfamiliar location targeting a specific user at an unusual hour suggests potential malicious activity.,"sentiment/HF
+ correctly  assumes sentiment.
+
+NER extracts information implying this is a foreign agent (likely malicious) useful for providing immediate context
+
+Successful classification from Groq. Classified threat accordingly and provided good reasoning
+
+All agents agree",5/13/2026 7:19pm
+Routine firewall rule update completed on fw-1 during scheduled maintenance window., NEGATIVE,0.9986, routine activity,0.9967, {}," INFORMATIONAL
+
+This is classified as INFORMATIONAL because it is a routine, expected event that does not pose a significant threat to the security of the system.","sentiment fails to grasp sentiment properly and seems to flag anything with relative cybersec. terminology as NEGATIVE.
+
+No extract from NER
+
+Successful classification from Groq. Classified threat accordingly and provided good reasoning
+
+Groq + NER agree whereas  distrillbert/sentiment disagree with both; proving him ineffective.",5/13/2026 6:52pm
+Phishing email with spoofed Amazon domain detected targeting finance@acmecorp.com., NEGATIVE,0.9958, possible anomaly,0.8097," {""entity_group"":""ORG"",""score"":0.99682486,""word"":""Amazon"",""start"":28,""end"":34}", HIGH. This alert is classified as HIGH because a phishing email with a spoofed domain is a targeted attack that could potentially compromise sensitive financial information.,"Sentiment: Correctly identifies this as NEGATIVE, though likely because of words like ""Phishing"" and ""spoofed.""
+
+Zero-Shot: Correctly identifies a ""possible anomaly"" (80% confidence).
+
+NER: Successfully extracts ""Amazon"" as an Organization, which is useful for identifying the brand being impersonated.
+
+Groq: Provides a high-quality classification (HIGH) with specific reasoning about financial risk.
+
+Comparison: All models agree that this is a threat, though Sentiment's ""correctness"" here is likely a coincidence of its keyword bias.",5/13/2026 6:52pm
+ Multiple failed SSH attempts from Beijing IP on Cloudflare production server 47 attempts in 5 minutes., NEGATIVE,0.9996, possible anomaly,0.8257," {""entity_group"":""MISC"",""score"":0.9801123,""word"":""SS"",""start"":17,""end"":19}"," CLASSIFICATION: HIGH
+
+Reasoning: The high frequency and large number of failed SSH attempts from a foreign IP (likely indicating a brute-force attack) warrant a high severity classification to prevent potential unauthorized access to the server.","Sentiment: Correctly flags as NEGATIVE with high confidence (99.9%).
+
+Zero-Shot: Correctly identifies as a ""possible anomaly.""
+
+NER: Interestingly, it only picked up ""SS"" as a Miscellaneous entity. This is less useful and shows the model's limitations with technical acronyms like SSH.
+
+Groq: Excellent classification. It correctly identifies the ""brute-force"" nature of the 47 attempts in 5 minutes, which the HF models couldn't quantify.
+
+Comparison: Models agree on the threat, but Groq is the only one that understands the scale of the attack.",5/13/2026 6:52pm
+"System resource utilization normal across all monitored hosts, no anomalies detected.", NEGATIVE,0.9874, routine activity,0.9688, {}," INFORMATIONAL
+
+This alert does not indicate any abnormal activity or a security issue, making it informational rather than a true alert.","Sentiment: Fails significantly. It flags ""normal utilization"" and ""no anomalies"" as 98% NEGATIVE.
+
+Zero-Shot: Highly successful; correctly identifies this as ""routine activity"" with 96% confidence.
+
+NER: Returns empty, which is expected as there are no names or locations.
+
+Groq: Correctly classifies as INFORMATIONAL.
+
+Comparison: Major disagreement. Sentiment is completely ineffective here, while Groq and Zero-Shot prove reliable for filtering out noise.
+",5/13/2026 6:52pm
